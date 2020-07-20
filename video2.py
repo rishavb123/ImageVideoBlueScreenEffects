@@ -5,6 +5,8 @@ import numpy as np
 
 name = sys.argv[1] if len(sys.argv) > 1 else 'combined'
 
+dev = True
+processed_folder = 'test' if dev else 'processed'
 
 capture = cv2.VideoCapture('./raw/' + name + '.mp4')
 
