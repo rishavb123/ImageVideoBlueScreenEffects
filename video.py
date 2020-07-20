@@ -7,6 +7,9 @@ name = sys.argv[1] if len(sys.argv) > 1 else 'combined'
 
 capture = cv2.VideoCapture('./raw/' + name + '.mp4')
 
+dev = False
+processed_folder = 'test' if dev else 'processed'
+
 def process(img):
     img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     img = cv2.GaussianBlur(img, (3, 3), 0)
@@ -14,7 +17,7 @@ def process(img):
 
 _, last_img = capture.read()
 last_img = process(last_img)
-out = cv2.VideoWriter('./processed/' + name + '.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 20, (last_img.shape[1], last_img.shape[0]))
+out = cv2.VideoWriter('./' + processed_folder + '/' + name + '.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 20, (last_img.shape[1], last_img.shape[0]))
 
 cnts_list = []
 
