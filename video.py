@@ -7,7 +7,7 @@ name = sys.argv[1] if len(sys.argv) > 1 else 'combined'
 
 capture = cv2.VideoCapture('./raw/' + name + '.mp4')
 
-dev = False
+dev = True
 processed_folder = 'test' if dev else 'processed'
 
 def process(img):
@@ -30,9 +30,6 @@ while True:
     _, img = capture.read()
     if img is None: 
         break
-        capture = cv2.VideoCapture('./raw/' + name + '.mp4')
-        _, img = capture.read()
-        first = False
     gray = process(img)
 
     delta = cv2.absdiff(last_img, gray)

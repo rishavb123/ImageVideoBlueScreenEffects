@@ -30,10 +30,6 @@ while True:
     _, img = capture.read()
     if img is None: 
         break
-        capture = cv2.VideoCapture('./raw/' + name + '.mp4')
-        _, img = capture.read()
-        first = False
-        print("I'm here!")
     gray = process(img)
 
     delta = cv2.absdiff(last_img, gray)
